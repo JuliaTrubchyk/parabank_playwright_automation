@@ -4,6 +4,7 @@ from playwright.sync_api import Page
 class BasePage:
     def __init__(self, page: Page):
         self.page = page
+        self.register_link = self.page.get_by_role("link", name="Register")
 
     def get_url(self) -> str:
         return self.page.url
