@@ -20,27 +20,27 @@ class RegisterPage(BasePage):
 
         self.register_button = self.page.get_by_role("button", name="Register")
 
-    def fill_personal_info(self, first_name: str, last_name: str):
-        self.first_name_input.fill(first_name)
-        self.last_name_input.fill(last_name)
-        self.address_street_input.fill("123 Main St")
-        self.city_input.fill("Anytown")
-        self.state_input.fill("CA")
-        self.zip_code_input.fill("12345")
-        self.phone_number_input.fill("123-456-7890")
-        self.ssn_input.fill("123-45-6789")
+    def fill_personal_info(self, user_data: dict):
+        self.first_name_input.fill(user_data["first_name"])
+        self.last_name_input.fill(user_data["last_name"])
+        self.address_street_input.fill(user_data["street"])
+        self.city_input.fill(user_data["city"])
+        self.state_input.fill(user_data["state"])
+        self.zip_code_input.fill(user_data["zip_code"])
+        self.phone_number_input.fill(user_data["phone"])
+        self.ssn_input.fill(user_data["ssn"])
 
-    def fill_credentials(self, username: str, password: str, confirm_password: str):
-        self.username_input.fill(username)
-        self.password_input.fill(password)
-        self.confirm_password_input.fill(confirm_password)
+    def fill_credentials(self, user_data: dict):
+        self.username_input.fill(user_data["username"])
+        self.password_input.fill(user_data["password"])
+        self.confirm_password_input.fill(user_data["confirm_password"])
 
     def submit_registration(self):
         self.register_button.click()
 
-    def register_user(self, first_name: str, last_name: str, username: str, password: str, confirm_password: str):
-        self.fill_personal_info(first_name, last_name)
-        self.fill_credentials(username,password, confirm_password)
+    def register_user(self, user_data: dict):
+        self.fill_personal_info(user_data)
+        self.fill_credentials(user_data)
         self.submit_registration()
 
 
