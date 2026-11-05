@@ -17,6 +17,7 @@ class RegisterPage(BasePage):
         self.username_input = self.page.locator('[id="customer.username"]')
         self.password_input = self.page.locator('[id="customer.password"]')
         self.confirm_password_input = self.page.locator("#repeatedPassword")
+        self.success_message = self.page.get_by_text("Your account was created successfully.")
 
         self.register_button = self.page.get_by_role("button", name="Register")
 
@@ -42,6 +43,9 @@ class RegisterPage(BasePage):
         self.fill_personal_info(user_data)
         self.fill_credentials(user_data)
         self.submit_registration()
+
+    def welcome_heading(self, username: str):
+        return self.page.get_by_role("heading", name=f"Welcome {username}", exact=True)
 
 
     

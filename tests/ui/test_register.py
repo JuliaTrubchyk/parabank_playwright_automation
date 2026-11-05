@@ -27,6 +27,6 @@ def test_user_register(home_page: HomePage, register_page: RegisterPage):
     }
 
     register_page.register_user(user_data)
-    expect(register_page.page.get_by_role("heading", name=f"Welcome {user_data['username']}")).to_be_visible()
-    expect(register_page.page.get_by_text("Your account was created successfully.")).to_be_visible()
+    expect(register_page.success_message).to_be_visible()
+    expect(register_page.welcome_heading(user_data['username'])).to_be_visible()
 
