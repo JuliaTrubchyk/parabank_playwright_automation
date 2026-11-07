@@ -1,10 +1,11 @@
 from playwright.sync_api import expect
+import pytest
 from pages.home_page import HomePage
 from pages.register_page import RegisterPage
 import uuid
 import re
 
-
+pytestmark = pytest.mark.ui_tests
 
 def test_user_register(home_page: HomePage, register_page: RegisterPage):
     home_page.open()
