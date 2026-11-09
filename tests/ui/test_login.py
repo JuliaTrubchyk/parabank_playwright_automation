@@ -6,7 +6,7 @@ pytestmark = pytest.mark.ui_tests
 
 # Positive test case for login with valid credentials
 def test_login_with_valid_credentials(home_page: HomePage, registered_user):
-    home_page.account_navigation.logout_link.click()
+    home_page.account_navigation.logout()
 
     home_page.login_component.login(
         registered_user["username"],
@@ -29,7 +29,7 @@ def test_login_with_valid_credentials(home_page: HomePage, registered_user):
     ],
 )
 def test_invalid_login(home_page: HomePage, registered_user, username, password, error_message):
-    home_page.account_navigation.logout_link.click()
+    home_page.account_navigation.logout()
 
     if username == "valid":
         username = registered_user["username"]
@@ -41,6 +41,13 @@ def test_invalid_login(home_page: HomePage, registered_user, username, password,
     
     expect(home_page.login_component.error_message).to_contain_text(error_message)
     expect(home_page.account_navigation.logout_link).to_be_hidden()
+
+# Logout
+def test_logout(home_page: HomePage, registered_user):
+    home_page.account_navigation.logout()
+    expect(home_page.login_component.login_button).to_be_visible()
+    expect(home_page.account_navigation.logout_link).to_be_hidden()
+
 
 
 

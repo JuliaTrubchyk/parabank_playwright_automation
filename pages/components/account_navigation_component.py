@@ -5,3 +5,6 @@ class AccountNavigationComponent:
         self.page = page
         self.logout_link = page.get_by_role("link", name="Log Out")
         self.welcome_message = page.locator("#leftPanel p.smallText")
+
+    def logout(self):
+        self.logout_link.click()
