@@ -1,6 +1,7 @@
 import pytest
 from pages.home_page import HomePage
 from pages.register_page import RegisterPage
+from pages.open_new_account_page import OpenNewAccountPage
 import uuid
 
 @pytest.fixture
@@ -31,3 +32,7 @@ def registered_user(home_page: HomePage, register_page: RegisterPage):
 
     register_page.register_user(user_data)
     return user_data
+
+@pytest.fixture
+def open_new_account_page(page):
+    return OpenNewAccountPage(page)

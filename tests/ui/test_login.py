@@ -45,6 +45,7 @@ def test_invalid_login(home_page: HomePage, registered_user, username, password,
 # Logout
 def test_logout(home_page: HomePage, registered_user):
     home_page.account_navigation.logout()
+    
     expect(home_page.login_component.login_button).to_be_visible()
     expect(home_page.account_navigation.logout_link).to_be_hidden()
 
